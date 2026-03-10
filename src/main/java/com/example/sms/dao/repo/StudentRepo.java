@@ -16,7 +16,7 @@ public interface StudentRepo extends JpaRepository<Student, String> {
 
     Page<Student> findAllStudentByStatus(Status status, Pageable pageable);
 
-@Query("SELECT s FROM Student s WHERE " + " (s.firstName LIKE ?1 OR s.lastName LIKE ?1 OR s.email LIKE ?1) " + " AND s.status = ?2 ")
+    @Query("SELECT s FROM Student s WHERE " + " (s.firstName LIKE ?1 OR s.lastName LIKE ?1 OR s.email LIKE ?1) " + " AND s.status = ?2 ")
     Page<Student> findAllByFirstNameContainsOrLastNameContainsOrEmailContainsAndStatus(String searchKeyword,
                                                                                        Status status,
                                                                                        Pageable pageable);

@@ -1,4 +1,5 @@
 package com.example.sms.entity.enums;
 
-public class Category {
+public enum Category {
+    BACKEND, FRONTEND, FULLSTACK
 }

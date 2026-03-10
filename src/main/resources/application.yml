@@ -9,7 +9,7 @@ spring:
     driver-class-name: com.mysql.cj.jdbc.Driver
   #
   jpa:
-    show-sql: true
+    show-sql: false
     hibernate:
       ddl-auto: update
       naming:
@@ -22,3 +22,10 @@ spring:
 
 server:
   port: 9090
+
+logging:
+  level:
+    root: info
+    com.example.sms: debug
+    org.hibernate.sql: info
+    org.springframework: info
