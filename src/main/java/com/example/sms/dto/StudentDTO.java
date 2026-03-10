@@ -41,7 +41,6 @@ public class StudentDTO {
                 .phoneNo(this.phoneNo)
                 .DOB(this.DOB)
                 .gender(this.gender)
-                .status(this.status)
                 .build();
     }
 
