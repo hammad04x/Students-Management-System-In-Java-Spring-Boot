@@ -52,7 +52,7 @@ public class StudentService {
 
         Pageable pageable = PageRequest.of(pageNo - 1, pageSize);
 
-        Page<Student> students = studentDao.findAllStudentByStatus(Status.ACTIVE,pageable);
+        Page<Student> students = studentDao.findAllStudentByStatus(Status.ACTIVE, pageable);
 
         List<StudentDTO> dtos = students.getContent()
                 .stream()
@@ -148,11 +148,11 @@ public class StudentService {
 
     }
 
-    public ResponseModel searchStudent(String searchKeyword,int pageSize, int pageNo) {
+    public ResponseModel searchStudent(String searchKeyword, int pageSize, int pageNo) {
 
         Pageable pageable = PageRequest.of(pageNo - 1, pageSize);
 
-        Page<Student> students = studentDao.searchStudent(searchKeyword, Status.ACTIVE,pageable);
+        Page<Student> students = studentDao.searchStudent(searchKeyword, Status.ACTIVE, pageable);
 
         List<StudentDTO> dtos = students.getContent()
                 .stream()
@@ -176,6 +176,5 @@ public class StudentService {
                 result
         );
     }
-
 
 }
