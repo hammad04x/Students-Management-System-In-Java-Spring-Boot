@@ -1,12 +1,16 @@
 package com.example.sms.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.PrePersist;
+import com.example.sms.entity.enums.Status;
+import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.util.UUID;
-
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 @Data
 @Entity
 public class Instructor {
@@ -18,9 +22,14 @@ public class Instructor {
     private String email;
     private String phoneNo;
 
+    @Enumerated(EnumType.STRING)
+    private Status status;
+
     @PrePersist
     public void prePersist() {
         this.instructorId = UUID.randomUUID().toString();
+        this.setStatus(Status.ACTIVE);
     }
+
 }
 
