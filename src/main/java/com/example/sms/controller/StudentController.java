@@ -3,6 +3,7 @@ package com.example.sms.controller;
 import com.example.sms.dto.ResponseModel;
 import com.example.sms.dto.StudentDTO;
 import com.example.sms.services.StudentService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -15,7 +16,7 @@ public class StudentController {
     private StudentService studentService;
 
     @PostMapping("/insert")
-    public ResponseModel insertStudent(@RequestBody StudentDTO dto) {
+    public ResponseModel insertStudent(@RequestBody @Valid StudentDTO dto) {
         return studentService.saveTheStudent(dto);
     }
 
