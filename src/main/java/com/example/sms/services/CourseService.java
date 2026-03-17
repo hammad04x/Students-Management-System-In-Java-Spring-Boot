@@ -8,6 +8,7 @@ import com.example.sms.entity.Course;
 import com.example.sms.entity.Instructor;
 import com.example.sms.entity.enums.Category;
 import com.example.sms.entity.enums.Status;
+import com.example.sms.exception.NotFoundExceptionResource;
 import com.example.sms.util.APIMessage;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -180,11 +181,10 @@ public class CourseService {
                     APIMessage.COURSE_FOUND,
                     result
             );
+        } catch (IllegalArgumentException e) {
+            throw new NotFoundExceptionResource(APIMessage.CATEGORY_NOT_FOUND);
         } catch (Exception e) {
-            return ResponseModel.not_found(
-                    APIMessage.CATEGORY_NOT_FOUND,
-                    null
-            );
+            throw e;
         }
 
 

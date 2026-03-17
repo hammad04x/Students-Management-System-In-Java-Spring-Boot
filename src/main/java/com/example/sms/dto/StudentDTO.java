@@ -1,11 +1,10 @@
 package com.example.sms.dto;
 
+import com.example.sms.controller.validator.MaxYear;
 import com.example.sms.entity.Student;
 import com.example.sms.entity.enums.Gender;
 import com.example.sms.entity.enums.Status;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
-import lombok.Builder;
+import jakarta.validation.constraints.*;
 import lombok.Data;
 
 import java.time.LocalDate;
@@ -14,12 +13,31 @@ import java.time.LocalDate;
 public class StudentDTO {
 
     private String studentId;
+
+    @NotBlank(message = "First Name Is Required")
+    @Size(min = 3, message = "At least 3 char name is required")
     private String fName;
+
+    @NotBlank(message = "Last Name Is Required")
+    @Size(min = 3, message = "At least 3 char name is required")
     private String lName;
+
+    @NotNull(message = "Date Of Birth Is Required")
+    @Past(message = "Date Of Birth Can't Be From Future")
+    @MaxYear(value = 2020)
     private LocalDate DOB;
+
+    @NotBlank(message = "Email Is Required")
+    @Email(message = "Invalid Email")
     private String email;
+
+    @NotBlank(message = "Phone No Is Required")
+    @Pattern(regexp = "[0-9]{10}$", message = "Invalid Phone No")
     private String phoneNo;
+
+    @NotNull(message = "Gender Is Required")
     private Gender gender;
+
     private Status status;
 
     public StudentDTO(String studentId, String fName, String lName, LocalDate DOB, String email, String phoneNo, Gender gender, Status status) {

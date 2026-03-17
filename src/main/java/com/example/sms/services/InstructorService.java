@@ -1,12 +1,12 @@
 package com.example.sms.services;
 
 import com.example.sms.dao.InstructorDao;
-import com.example.sms.dto.DepartmentDTO;
 import com.example.sms.dto.InstructorDTO;
 import com.example.sms.dto.ResponseModel;
-import com.example.sms.entity.Department;
 import com.example.sms.entity.Instructor;
 import com.example.sms.entity.enums.Status;
+import com.example.sms.exception.DuplicateExceptionResource;
+import com.example.sms.exception.NotFoundExceptionResource;
 import com.example.sms.util.APIMessage;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,18 +31,12 @@ public class InstructorService {
 
         boolean instructorExist = instructorDao.existInstructorByEmail(dto.getEmail());
         if (instructorExist) {
-            return ResponseModel.conflict(
-                    APIMessage.INSTRUCTOR_ALREADY_PRESENT.formatted("Email"),
-                    null
-            );
+            throw new DuplicateExceptionResource(APIMessage.INSTRUCTOR_ALREADY_PRESENT.formatted("Email"));
         }
 
         instructorExist = instructorDao.existInstructorByPhoneNo(dto.getPhoneNo());
         if (instructorExist) {
-            return ResponseModel.conflict(
-                    APIMessage.INSTRUCTOR_ALREADY_PRESENT.formatted("PhoneNo"),
-                    null
-            );
+            throw new DuplicateExceptionResource(APIMessage.INSTRUCTOR_ALREADY_PRESENT.formatted("phoneNo"));
         }
 
         log.debug("All Validation Done Ready to Insert new Instructor");
@@ -59,11 +53,14 @@ public class InstructorService {
         Pageable pageable = PageRequest.of(pageNo - 1, pageSize);
 
         Page<Instructor> instructors = instructorDao.findAllByStatus(Status.ACTIVE, pageable);
-
+        log.info("Before list ");
+        System.out.println(instructors);
         List<InstructorDTO> dtos = instructors.getContent()
                 .stream()
                 .map(InstructorDTO::toDTO)
                 .toList();
+        log.info("After list ");
+        System.out.println(dtos);
 
         Map<String, Object> pageResult = new HashMap<>();
         pageResult.put("pageSize", pageSize);
@@ -85,10 +82,7 @@ public class InstructorService {
 
         Instructor instructor = instructorDao.findById(instructorId);
         if (instructor == null) {
-            return ResponseModel.not_found(
-                    APIMessage.INSTRUCTOR_NOT_FOUND,
-                    null
-            );
+            throw new NotFoundExceptionResource(APIMessage.INSTRUCTOR_NOT_FOUND);
         }
 
         return ResponseModel.success(
