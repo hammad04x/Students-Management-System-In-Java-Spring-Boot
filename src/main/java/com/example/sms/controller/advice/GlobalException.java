@@ -2,8 +2,8 @@ package com.example.sms.controller.advice;
 
 import com.example.sms.dto.ResponseModel;
 import com.example.sms.exception.DuplicateExceptionResource;
+import com.example.sms.exception.MaxLimitExceptionResource;
 import com.example.sms.exception.NotFoundExceptionResource;
-import com.example.sms.util.APIMessage;
 import org.springframework.http.HttpStatus;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
@@ -30,13 +30,21 @@ public class GlobalException {
                 null
         );
     }
+    @ExceptionHandler(MaxLimitExceptionResource.class)
+    public ResponseModel handleMaxLimitExceptionResource(MaxLimitExceptionResource exception) {
+        return ResponseModel.not_found(
+                exception.getMessage(),
+                null
+        );
+    }
 
     @ExceptionHandler(Exception.class)
     public ResponseModel handleException(Exception exception) {
         return new ResponseModel(
                 HttpStatus.INTERNAL_SERVER_ERROR,
-                "An Unexpected Error Occured, Please try again",
+                exception.getMessage(),
                 null
+
         );
     }
 

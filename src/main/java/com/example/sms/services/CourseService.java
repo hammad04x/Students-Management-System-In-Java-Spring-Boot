@@ -52,7 +52,7 @@ public class CourseService {
         Course course = courseDTO.toEntity(instructor);
         course = courseDao.save(course);
         log.info("Insert Course Method Execution End Preparing Response");
-        return ResponseModel.success(
+        return ResponseModel.created(
                 APIMessage.COURSE_CREATED,
                 CourseDTO.toDTO(course)
         );
