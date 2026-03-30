@@ -31,13 +31,13 @@ public class LoggingAspect {
     public Object loggingMethodExecution(ProceedingJoinPoint pjp) throws Throwable {
         String serviceName = pjp.getTarget().getClass().getSimpleName();
 
-        String mehtodName = pjp.getSignature().getName();
+        String methodeName = pjp.getSignature().getName();
 
         LocalDateTime startTime = LocalDateTime.now();
         String startTimerStr = startTime.format(FORMATTER);
 
         log.info("============ Start For ReqId {} =================", reqId);
-        log.info("Service: {}, Method: {}", serviceName, mehtodName);
+        log.info("Service: {}, Method: {}", serviceName, methodeName);
         log.info("StartTimer: {}", startTimerStr);
         log.info("=============================");
 
@@ -58,7 +58,7 @@ public class LoggingAspect {
             long durationsMillis = duration.toMillis();
 
             log.info("============== End For ReqId {} ===============", reqId);
-            log.info("Service: {}, Method: {}", serviceName, mehtodName);
+            log.info("Service: {}, Method: {}", serviceName, methodeName);
             if (exception != null) {
                 log.error("Status: Failed | Exception: {}", exception.getMessage());
             }

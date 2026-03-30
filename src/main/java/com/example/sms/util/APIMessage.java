@@ -32,11 +32,20 @@ public class APIMessage {
     // -----------------END-------------------
 
     // ---------- Instructor Service ------
-    public static final String INSTRUCTOR_FOUND = "Instructor found";
+    public static final String INSTRUCTOR_FOUND = "Instructor Found";
     public static final String INSTRUCTOR_NOT_FOUND = "Instructor Not Found";
-    public static final String INSTRUCTOR_UPDATED = "Instructor updated";
-    public static final String INSTRUCTOR_DELETED = "Instructor deleted";
-    public static final String INSTRUCTOR_ALREADY_PRESENT = "Instructor with same %s Already Exists";
+    public static final String INSTRUCTOR_UPDATED = "Instructor Updated";
+    public static final String INSTRUCTOR_DELETED = "Instructor Deleted";
+    public static final String INSTRUCTOR_ALREADY_PRESENT = "Instructor With Same %s Already Exists";
     public static final String INSTRUCTOR_CREATED = "Instructor Created";
     // --------- End --------
+
+    // ---------- Enrollment Service ------
+    public static final String ENROLLMENT_MAX_LIMIT_REACHED = "Course Enrollment Limit Reached";
+    public static final String ENROLLMENT_SUCCESS = "New Enrollment Success!";
+    public static final String ENROLLMENT_FETCH_SUCCESS = "Enrollment Found!";
+    public static final String STUDENT_ALREADY_ENROLLED = "Student Already Enrollment For this course";
+    public static final String ENROLLMENT_NOT_FOUND = "Enrollment Not Found";
+    public static final String ENROLLMENT_UPDATE_SUCCESS = "Enrollment Update Successfully";
+    public static final String ENROLLMENT_DELETE_SUCCESS = "Enrollment Deleted Successfully";
 }

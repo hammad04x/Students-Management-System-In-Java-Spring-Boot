@@ -2,11 +2,9 @@ package com.example.sms.controller;
 
 import com.example.sms.dto.DepartmentDTO;
 import com.example.sms.dto.ResponseModel;
-import com.example.sms.entity.Department;
 import com.example.sms.services.DepartmentService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.repository.query.Param;
 import org.springframework.web.bind.annotation.*;
 
 @Slf4j

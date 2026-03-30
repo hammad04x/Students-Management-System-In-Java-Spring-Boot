@@ -10,6 +10,7 @@ import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
 import java.util.UUID;
+
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
@@ -35,10 +36,15 @@ public class Course {
     @JoinColumn(name = "instructor_Id")
     private Instructor instructorId;
 
+    private int maxEnrollment;
+
+    private int currentEnrollment;
+
     @PrePersist
     public void prePersist() {
         this.courseId = UUID.randomUUID().toString();
         this.createdOn = LocalDate.now();
         this.setStatus(Status.ACTIVE);
+        this.setMaxEnrollment(10);
     }
 }

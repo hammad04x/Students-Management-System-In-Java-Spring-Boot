@@ -1,5 +1,6 @@
 package com.example.sms.entity;
 
+import com.example.sms.entity.enums.Status;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -8,6 +9,11 @@ import java.util.UUID;
 
 @Data
 @Entity
+@Table(
+        uniqueConstraints = {
+                @UniqueConstraint(columnNames = {"studentId", "courseId"})
+        }
+)
 public class Enrollment {
 
     @Id
@@ -16,11 +22,12 @@ public class Enrollment {
 
     @ManyToOne
     @JoinColumn(name = "studentId")
-    private Student studentId;
+    private Student student;
 
     @ManyToOne
     @JoinColumn(name = "courseId")
-    private Course courseId;
+    private Course course;
+
 
     @PrePersist
     public void prePersist() {
