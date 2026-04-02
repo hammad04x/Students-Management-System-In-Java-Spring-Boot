@@ -1,0 +1,763 @@
+{
+  "info": {
+    "_postman_id": "1415648f-7291-4de6-8130-cf4eafecf026",
+    "name": "SMS",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "36983300",
+    "_collection_link": "https://go.postman.co/collection/36983300-1415648f-7291-4de6-8130-cf4eafecf026?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "Student Collections",
+      "item": [
+        {
+          "name": "Get-All",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{SMS}}student/get-all?pageSize=10&pageNo=1",
+              "host": [
+                "{{SMS}}student"
+              ],
+              "path": [
+                "get-all"
+              ],
+              "query": [
+                {
+                  "key": "pageSize",
+                  "value": "10"
+                },
+                {
+                  "key": "pageNo",
+                  "value": "1"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Insert Student",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"fName\":\"HEY\",\r\n    \"lName\":\"HII\",\r\n    \"DOB\":\"2004-04-04\",\r\n    \"email\":\"HEY@gmail.com\",\r\n    \"phoneNo\":\"919987612345\",\r\n    \"gender\":\"MALE\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{SMS}}student/insert",
+              "host": [
+                "{{SMS}}student"
+              ],
+              "path": [
+                "insert"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Student By Id",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{SMS}}student/by/d8ccb38f-d8e1-424c-a594-1ed890dc5fc5",
+              "host": [
+                "{{SMS}}student"
+              ],
+              "path": [
+                "by",
+                "d8ccb38f-d8e1-424c-a594-1ed890dc5fc5"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Delete Student By Id",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{SMS}}delete/fee69d41-45d0-42f2-a9eb-d8c404578977",
+              "host": [
+                "{{SMS}}delete"
+              ],
+              "path": [
+                "fee69d41-45d0-42f2-a9eb-d8c404578977"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Search Student",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{SMS}}search?keywords=a&pageSize=10&pageNo=1",
+              "host": [
+                "{{SMS}}search"
+              ],
+              "query": [
+                {
+                  "key": "keywords",
+                  "value": "a"
+                },
+                {
+                  "key": "pageSize",
+                  "value": "10"
+                },
+                {
+                  "key": "pageNo",
+                  "value": "1"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Update Student By Id",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"studentId\": \"d8ccb38f-d8e1-424c-a594-1ed890dc5fc5\",\r\n\r\n    \"fName\":\"HEY\",\r\n    \"lName\":\"HII\",\r\n    \"DOB\":\"2004-04-04\",\r\n    \"email\":\"HEY@gmail.com\",\r\n    \"phoneNo\":\"919987612345\",\r\n    \"gender\":\"MALE\",\r\n    \"status\":\"ACTIVE\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{SMS}}student/update/d8ccb38f-d8e1-424c-a594-1ed890dc5fc5",
+              "host": [
+                "{{SMS}}student"
+              ],
+              "path": [
+                "update",
+                "d8ccb38f-d8e1-424c-a594-1ed890dc5fc5"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Course Collection",
+      "item": [
+        {
+          "name": "Insert course",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"courseName\":\"Next\",\r\n    \"courseDescription\":\"HelloWorld\",\r\n    \"duration\":\"3\",\r\n    \"category\":\"FRONTEND\",\r\n    \"instructorId\":\"12345-world\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{SMS}}course/insert",
+              "host": [
+                "{{SMS}}course"
+              ],
+              "path": [
+                "insert"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get All",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{SMS}}course/get-all?pageSize=10&pageNo=1",
+              "host": [
+                "{{SMS}}course"
+              ],
+              "path": [
+                "get-all"
+              ],
+              "query": [
+                {
+                  "key": "pageSize",
+                  "value": "10"
+                },
+                {
+                  "key": "pageNo",
+                  "value": "1"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Course By Id",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{SMS}}course/by/9fbc0bd5-dd2c-4a92-83c9-46d24492f1cb",
+              "host": [
+                "{{SMS}}course"
+              ],
+              "path": [
+                "by",
+                "9fbc0bd5-dd2c-4a92-83c9-46d24492f1cb"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Update Course By Id",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    // \"courseName\":\"Java\",\r\n    \"courseDescription\":\"HelloWorrld\",\r\n    \"duration\":\"3\",\r\n    \"category\":\"BACKEND\",\r\n    \"instructorId\":\"123456-abc\",\r\n    \"status\":\"DEACTIVE\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{SMS}}course/update/9fbc0bd5-dd2c-4a92-83c9-46d24492f1cb",
+              "host": [
+                "{{SMS}}course"
+              ],
+              "path": [
+                "update",
+                "9fbc0bd5-dd2c-4a92-83c9-46d24492f1cb"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Delete Course By Id",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{SMS}}course/delete/9fbc0bd5-dd2c-4a92-83c9-46d24492f1cb",
+              "host": [
+                "{{SMS}}course"
+              ],
+              "path": [
+                "delete",
+                "9fbc0bd5-dd2c-4a92-83c9-46d24492f1cb"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Filter  By Category",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{SMS}}course/by/category/BACKkEND?pageSize=10&pageNo=1",
+              "host": [
+                "{{SMS}}course"
+              ],
+              "path": [
+                "by",
+                "category",
+                "BACKkEND"
+              ],
+              "query": [
+                {
+                  "key": "pageSize",
+                  "value": "10"
+                },
+                {
+                  "key": "pageNo",
+                  "value": "1"
+                }
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Department Collection",
+      "item": [
+        {
+          "name": "Insert Department",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"departmentName\":\"Arts\",\r\n    \"hodId\":\"12345-world\",\r\n    \"instructorIds\":[\"12345-world\"]\r\n}   ",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{SMS}}department/insert",
+              "host": [
+                "{{SMS}}department"
+              ],
+              "path": [
+                "insert"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Update Department",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"departmentName\":\"Computer Science\",\r\n    \"hodId\":\"123-abc\",\r\n    \"instructorIds\":[\"123-abc\",\"12345-hello\"]\r\n}   ",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{SMS}}department/update/by/6ff3feaf-649c-412a-bb34-46b67293a36f",
+              "host": [
+                "{{SMS}}department"
+              ],
+              "path": [
+                "update",
+                "by",
+                "6ff3feaf-649c-412a-bb34-46b67293a36f"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get All",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{SMS}}department/get-all",
+              "host": [
+                "{{SMS}}department"
+              ],
+              "path": [
+                "get-all"
+              ],
+              "query": [
+                {
+                  "key": "pageSize",
+                  "value": "10",
+                  "disabled": true
+                },
+                {
+                  "key": "pageNo",
+                  "value": "1",
+                  "disabled": true
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Department By Id",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "var template = `",
+                  "<canvas id=\"myChart\" height=\"75\"></canvas>",
+                  "<script src=\"https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js\"></script>",
+                  "<script>",
+                  "    var ctx = document.getElementById(\"myChart\");",
+                  "    var myChart = new Chart(ctx, {",
+                  "        type: \"bar\",",
+                  "        data: {",
+                  "            labels: [],",
+                  "            datasets: [{",
+                  "                label: 'Number of Instructors',",
+                  "                backgroundColor: 'rgba(54, 162, 235, 0.6)',",
+                  "                borderColor: 'rgba(54, 162, 235, 1)',",
+                  "                borderWidth: 1,",
+                  "                data: []",
+                  "            }]",
+                  "        },",
+                  "        options: {",
+                  "            legend: { display: true },",
+                  "            title: {",
+                  "                display: true,",
+                  "                text: 'Department Instructor Count'",
+                  "            },",
+                  "            scales: {",
+                  "                xAxes: [{ display: true, scaleLabel: { display: true, labelString: 'Department' } }],",
+                  "                yAxes: [{ display: true, ticks: { beginAtZero: true, stepSize: 1 }, scaleLabel: { display: true, labelString: 'Instructor Count' } }]",
+                  "            }",
+                  "        }",
+                  "    });",
+                  "",
+                  "    pm.getData(function (err, value) {",
+                  "        myChart.data.labels = [value.departmentName];",
+                  "        myChart.data.datasets[0].data = [value.instructorCount];",
+                  "        myChart.update();",
+                  "    });",
+                  "<\\/script>`;",
+                  "",
+                  "function constructVisualizerPayload() {",
+                  "    var res = pm.response.json();",
+                  "    return {",
+                  "        departmentName: res.data.departmentName,",
+                  "        instructorCount: res.data.instructorIds.length",
+                  "    };",
+                  "}",
+                  "",
+                  "pm.visualizer.set(template, constructVisualizerPayload());"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{SMS}}department/by/6ff3feaf-649c-412a-bb34-46b67293a36f",
+              "host": [
+                "{{SMS}}department"
+              ],
+              "path": [
+                "by",
+                "6ff3feaf-649c-412a-bb34-46b67293a36f"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Delete Deprtment By Id",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{SMS}}department/delete/by/a7a95f54-ecfc-43f8-93b0-41ea019a4461",
+              "host": [
+                "{{SMS}}department"
+              ],
+              "path": [
+                "delete",
+                "by",
+                "a7a95f54-ecfc-43f8-93b0-41ea019a4461"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Serach Department",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{SMS}}department/search?serachKeyword=c",
+              "host": [
+                "{{SMS}}department"
+              ],
+              "path": [
+                "search"
+              ],
+              "query": [
+                {
+                  "key": "serachKeyword",
+                  "value": "c"
+                }
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Instructor Collection",
+      "item": [
+        {
+          "name": "Insert Instructor",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"firstName\":\"Claude\",\r\n    \"lastName\":\"Ai\",\r\n    \"email\":\"Claude@gmail.com\",\r\n    \"phoneNo\":\"0099009990\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{SMS}}instructor/insert",
+              "host": [
+                "{{SMS}}instructor"
+              ],
+              "path": [
+                "insert"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Update Instructor By Id",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"firstName\":\"Claude\",\r\n    \"lastName\":\"Ai\",\r\n    \"email\":\"Claude@gmail.com\",\r\n    \"phoneNo\":\"9900900099\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{SMS}}instructor/update/by/4e0c5244-30c1-4b0c-96b0-937145fb90ee",
+              "host": [
+                "{{SMS}}instructor"
+              ],
+              "path": [
+                "update",
+                "by",
+                "4e0c5244-30c1-4b0c-96b0-937145fb90ee"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get All",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{SMS}}instructor/get-all?pageSize=10&pageNo=1",
+              "host": [
+                "{{SMS}}instructor"
+              ],
+              "path": [
+                "get-all"
+              ],
+              "query": [
+                {
+                  "key": "pageSize",
+                  "value": "10",
+                  "type": "text"
+                },
+                {
+                  "key": "pageNo",
+                  "value": "1",
+                  "type": "text"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Serach Department Copy",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{SMS}}instructor/search?keyword=c",
+              "host": [
+                "{{SMS}}instructor"
+              ],
+              "path": [
+                "search"
+              ],
+              "query": [
+                {
+                  "key": "keyword",
+                  "value": "c"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Instructor By Id",
+          "request": {
+            "method": "GET",
+            "header": []
+          },
+          "response": []
+        },
+        {
+          "name": "Delete Instructor By Id",
+          "request": {
+            "method": "GET",
+            "header": []
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Enrollment Collection",
+      "item": [
+        {
+          "name": "Insert Enrollment",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"courseId\":\"375d0896-a500-4162-8181-deddc44245e8\",\r\n    \"studentId\":\"4d2b1dc7-eb81-40a7-bf85-f880491cadab\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{SMS}}enrollment/insert",
+              "host": [
+                "{{SMS}}enrollment"
+              ],
+              "path": [
+                "insert"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Update Enrollment By Id",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"courseId\":\"375d0896-a500-4162-8181-deddc44245e8\",\r\n    \"studentId\":\"4d2b1dc7-eb81-40a7-bf85-f880491cadab\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{SMS}}enrollment/insert",
+              "host": [
+                "{{SMS}}enrollment"
+              ],
+              "path": [
+                "insert"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get All",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{SMS}}enrollment/get-all?pageSize=10&pageNo=1",
+              "host": [
+                "{{SMS}}enrollment"
+              ],
+              "path": [
+                "get-all"
+              ],
+              "query": [
+                {
+                  "key": "pageSize",
+                  "value": "10"
+                },
+                {
+                  "key": "pageNo",
+                  "value": "1"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Enrollment By Id",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{SMS}}enrollment/by/04aed783-835d-4f2e-9827-d018cbcb31e2",
+              "host": [
+                "{{SMS}}enrollment"
+              ],
+              "path": [
+                "by",
+                "04aed783-835d-4f2e-9827-d018cbcb31e2"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Delete Enrollment By Id",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{SMS}}enrollment/delete/by/04aed783-835d-4f2e-9827-d018cbcb31e2",
+              "host": [
+                "{{SMS}}enrollment"
+              ],
+              "path": [
+                "delete",
+                "by",
+                "04aed783-835d-4f2e-9827-d018cbcb31e2"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ]
+}
