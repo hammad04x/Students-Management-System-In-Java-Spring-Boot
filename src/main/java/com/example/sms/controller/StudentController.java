@@ -6,6 +6,7 @@ import com.example.sms.services.StudentService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 
 @RestController
@@ -16,8 +17,9 @@ public class StudentController {
     private StudentService studentService;
 
     @PostMapping("/insert")
-    public ResponseModel insertStudent(@RequestBody @Valid StudentDTO dto) {
-        return studentService.saveTheStudent(dto);
+    public ResponseModel insertStudent(@RequestPart("student") @Valid StudentDTO dto,
+                                       @RequestPart("image") MultipartFile image) {
+        return studentService.saveTheStudent(dto, image);
     }
 
     @GetMapping("/get-all")
@@ -32,8 +34,10 @@ public class StudentController {
     }
 
     @PutMapping("/update/{id}")
-    public ResponseModel updateStudentById(@PathVariable String id, @RequestBody StudentDTO dto) {
-        return studentService.updateTheStudent(id, dto);
+    public ResponseModel updateStudentById(@PathVariable String id,
+                                           @RequestPart("student") StudentDTO dto,
+                                           @RequestPart(value = "image", required = false) MultipartFile image) {
+        return studentService.updateTheStudent(id, dto, image);
     }
 
     @DeleteMapping("/delete/{id}")
@@ -47,8 +51,6 @@ public class StudentController {
                                        @RequestParam(required = false, defaultValue = "10") int pageSize) {
         return studentService.searchStudent(keywords, pageSize, pageNo);
     }
-
-
 
 
 }

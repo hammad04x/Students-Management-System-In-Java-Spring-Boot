@@ -11,7 +11,12 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -22,7 +27,10 @@ public class StudentService {
     @Autowired
     private StudentDao studentDao;
 
-    public ResponseModel saveTheStudent(StudentDTO dto) {
+    @Autowired
+    private FileStorageService fileStorageService;
+
+    public ResponseModel saveTheStudent(StudentDTO dto, MultipartFile image) {
 
         Boolean studentExists = studentDao.existsStudentByEmail(dto.getEmail());
         if (studentExists) {
@@ -38,6 +46,15 @@ public class StudentService {
                     APIMessage.STUDENT_ALREADY_PRESENT.formatted("PhoneNo"),
                     null
             );
+        }
+
+        if (image != null && !image.isEmpty()) {
+            try {
+                String imagePath = fileStorageService.storeFile(image);
+                dto.setImagePath(imagePath);
+            } catch (IOException e) {
+                return ResponseModel.conflict("Image upload failed: " + e.getMessage(), null);
+            }
         }
 
         Student student = dto.toEntity();
@@ -94,11 +111,11 @@ public class StudentService {
 
     }
 
-    public ResponseModel updateTheStudent(String id, StudentDTO dto) {
+    public ResponseModel updateTheStudent(String id, StudentDTO dto, MultipartFile image) {
 
         Student student = studentDao.findById(id);
         if (student == null) {
-            ResponseModel.not_found(
+            return ResponseModel.not_found(
                     APIMessage.STUDENT_NOT_FOUND,
                     null
             );
@@ -118,6 +135,27 @@ public class StudentService {
                     APIMessage.STUDENT_ALREADY_PRESENT.formatted("PhoneNo"),
                     null
             );
+        }
+
+        if (image != null && !image.isEmpty()) {
+
+            // delete old image from disk first
+            if (student.getImagePath() != null) {
+                try {
+                    Path oldImagePath = Paths.get(student.getImagePath());
+                    Files.deleteIfExists(oldImagePath);
+                } catch (IOException e) {
+                    System.err.println("Could not delete old image: " + e.getMessage());
+                }
+            }
+
+            // save new image
+            try {
+                String newImagePath = fileStorageService.storeFile(image);
+                dto.setImagePath(newImagePath);
+            } catch (IOException e) {
+                return ResponseModel.conflict("Image upload failed: " + e.getMessage(), null);
+            }
         }
 
         student = dto.toUpdateEntity(student);

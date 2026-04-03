@@ -29,3 +29,7 @@ logging:
     com.example.sms: debug
     org.hibernate.sql: info
     org.springframework: info
+
+app:
+  upload:
+    dir=uploads/students:
