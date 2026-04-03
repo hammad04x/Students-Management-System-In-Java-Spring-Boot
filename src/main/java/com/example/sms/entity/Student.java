@@ -26,12 +26,14 @@ public class Student {
     private LocalDate DOB;
     private String email;
     private String phoneNo;
+    private String imagePath;
 
     @Enumerated(EnumType.STRING)
     private Gender gender;
 
     @Enumerated(EnumType.STRING)
     private Status status;
+
 
     @PrePersist
     public void prePersist() {

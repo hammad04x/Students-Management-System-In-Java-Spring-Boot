@@ -35,18 +35,21 @@ public class StudentDTO {
     @Pattern(regexp = "[0-9]{10}$", message = "Invalid Phone No")
     private String phoneNo;
 
+    private String imagePath;
+
     @NotNull(message = "Gender Is Required")
     private Gender gender;
 
     private Status status;
 
-    public StudentDTO(String studentId, String fName, String lName, LocalDate DOB, String email, String phoneNo, Gender gender, Status status) {
+    public StudentDTO(String studentId, String fName, String lName, LocalDate DOB, String email, String phoneNo, String imagePath, Gender gender, Status status) {
         this.studentId = studentId;
         this.fName = fName;
         this.lName = lName;
         this.DOB = DOB;
         this.email = email;
         this.phoneNo = phoneNo;
+        this.imagePath = imagePath;
         this.gender = gender;
         this.status = status;
     }
@@ -58,6 +61,7 @@ public class StudentDTO {
                 .email(this.email)
                 .phoneNo(this.phoneNo)
                 .DOB(this.DOB)
+                .imagePath(this.imagePath)
                 .gender(this.gender)
                 .build();
     }
@@ -70,6 +74,7 @@ public class StudentDTO {
                 entity.getDOB(),
                 entity.getEmail(),
                 entity.getPhoneNo(),
+                entity.getImagePath(),
                 entity.getGender(),
                 entity.getStatus()
         );
@@ -88,6 +93,9 @@ public class StudentDTO {
         }
         if (this.phoneNo != null) {
             entity.setPhoneNo(this.phoneNo);
+        }
+        if (this.imagePath != null) {
+            entity.setImagePath(this.imagePath);
         }
         if (this.DOB != null) {
             entity.setDOB(this.DOB);

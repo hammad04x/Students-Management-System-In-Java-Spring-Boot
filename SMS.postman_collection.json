@@ -670,11 +670,11 @@
         {
           "name": "Update Enrollment By Id",
           "request": {
-            "method": "POST",
+            "method": "PUT",
             "header": [],
             "body": {
               "mode": "raw",
-              "raw": "{\r\n    \"courseId\":\"375d0896-a500-4162-8181-deddc44245e8\",\r\n    \"studentId\":\"4d2b1dc7-eb81-40a7-bf85-f880491cadab\"\r\n}",
+              "raw": "{\r\n    \"courseId\":\"375d0896-a500-4162-8181-deddc44245e8\",\r\n    \"studentId\":\"da60ea45-7780-4235-ba99-b45390f29ea6\"\r\n}",
               "options": {
                 "raw": {
                   "language": "json"
@@ -682,12 +682,14 @@
               }
             },
             "url": {
-              "raw": "{{SMS}}enrollment/insert",
+              "raw": "{{SMS}}enrollment/update/by/aa86c6d9-5241-4cfe-80dc-b8f4ff4c70fb",
               "host": [
                 "{{SMS}}enrollment"
               ],
               "path": [
-                "insert"
+                "update",
+                "by",
+                "aa86c6d9-5241-4cfe-80dc-b8f4ff4c70fb"
               ]
             }
           },
